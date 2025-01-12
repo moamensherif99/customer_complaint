@@ -1,0 +1,15 @@
+<odoo>
+    <menuitem id="customer_complaint_root_menu"
+              name="Customer Complaint"
+    />
+    <menuitem id="customer_complaint_menu"
+              name="Customer Complaint"
+              parent="customer_complaint_root_menu"
+    />
+    <menuitem id="customer_complaint_menu_item"
+              name="Customer Complaints"
+              parent="customer_complaint_menu"
+              action="customer_complaint_action"
+    />
+
+</odoo>

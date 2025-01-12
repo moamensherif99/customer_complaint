@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="customer_complaint_sequence" model="ir.sequence">
+            <field name="name">Customer Complaint Seq.</field>
+            <field name="prefix">CC</field>
+            <field name="padding">6</field>
+            <field name="code">customer_complaint_seq</field>
+        </record>
+    </data>
+</odoo>

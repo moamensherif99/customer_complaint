@@ -1,0 +1,98 @@
+<odoo>
+    <record id="customer_complaint_tree_view" model="ir.ui.view">
+        <field name="name">customer complaint tree view</field>
+        <field name="model">customer.complaint</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="reference"/>
+                <field name="attachment_ids"/>
+                <field name="employee_id"/>
+                <field name="job_id"/>
+                <field name="department_id"/>
+                <field name="company_id"/>
+                <field name="logicom_company_id"/>
+                <field name="assigned_manager_id"/>
+                <field name="responsible_id"/>
+                <field name="comment"/>
+                <field name="complainant"/>
+                <field name="customer_name"/>
+                <field name="complaint_date"/>
+                <field name="complaint_description"/>
+                <field name="proposed_action"/>
+                <field name="proposed_completion_date"/>
+                <field name="result"/>
+                <field name="actual_completion_date"/>
+                <field name="actual_completion_period"/>
+            </tree>
+        </field>
+    </record>
+    <record id="customer_complaint_form_view" model="ir.ui.view">
+        <field name="name">customer complaint form view</field>
+        <field name="model">customer.complaint</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                        <button name="action_mark_as_draft" type="object" class="btn-primary" string="Mark as Draft"/>
+                        <button name="action_confirm" type="object" class="btn-success" string="Confirm" />
+                        <button name="action_refuse" type="object" class="btn-danger" string="Refuse" />
+                        <button name="action_approve" type="object" class="btn-secondary" string="Approve" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,refused,approved"/>
+                    </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="active" invisible="1"/>
+                            <field name="reference"/>
+                            <field name="comment"/>
+                            <field name="complainant"/>
+                            <field name="customer_name"/>
+                            <field name="complaint_date"/>
+                            <field name="complaint_description"/>
+                            <field name="proposed_action"/>
+                            <field name="proposed_completion_date"/>
+                            <field name="result"/>
+                            <field name="actual_completion_date"/>
+                            <field name="actual_completion_period"/>
+                        </group>
+                        <group>
+                            <field name="attachment_ids"/>
+                            <field name="employee_id"/>
+                            <field name="job_id"/>
+                            <field name="department_id"/>
+                            <field name="company_id"/>
+                            <field name="logicom_company_id"/>
+                            <field name="assigned_manager_id"/>
+                            <field name="responsible_id"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="customer_complaint_search_view" model="ir.ui.view">
+        <field name="name">customer complaint search view</field>
+        <field name="model">customer.complaint</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="complaint_date_group" string="Complaint Date" context="{'group_by':'complaint_date'}"/>
+                <filter name="proposed_completion_date_group" string="Proposed Completion Date" context="{'group_by':'proposed_completion_date'}"/>
+                <filter name="actual_completion_date_group" string="Actual Completion Date" context="{'group_by':'actual_completion_date'}"/>
+
+                <filter name="is_complaint_date" string="With Complaint Date" domain="[('complaint_date','=',True)]"/>
+                <filter name="is_proposed_completion_date" string="With Proposed Completion Date" domain="[('proposed_completion_date','=',True)]"/>
+                <filter name="is_actual_completion_date" string="With Actual Completion Date" domain="[('actual_completion_date','=',True)]"/>
+            </search>
+        </field>
+    </record>
+    <record id="customer_complaint_action" model="ir.actions.act_window">
+        <field name="name">Customer Complaint</field>
+        <field name="res_model">customer.complaint</field>
+    </record>
+</odoo>
